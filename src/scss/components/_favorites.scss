@@ -1,0 +1,47 @@
+@import '../abstracts';
+
+html:not([data-scroll='false']){
+    .favorites{
+        height: 100% !important;
+    }
+}
+
+.favorites {
+    @include size(100%);
+    @include flex(flex-start, flex-start);
+    @include scrollbar();
+    flex-wrap: wrap;
+
+    
+
+    @media screen and (max-width: 555px) {
+        &__card {
+            @include size(100% !important, fit-content);
+        }
+    }
+
+    &__card {
+        @include size(fit-content, fit-content);
+        @include text-fadeIn();
+        text-align: center;
+        padding: 4em 3em;
+        margin: 1em;
+        position: relative;
+
+        & > * {
+            margin-bottom: 5px;
+        }
+
+        & > :first-child{
+            position: absolute;
+            cursor: pointer;
+            top: 1em;
+            right: 1em;
+        }
+
+        & > :last-child{
+            @include btn();
+            margin: auto;
+        }
+    }
+}

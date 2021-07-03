@@ -1,0 +1,65 @@
+@mixin size($width: auto, $height: auto) {
+    width: $width;
+    height: $height;
+}
+
+@mixin flex($justify: safe center, $align: safe center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin btn($width:fit-content, $cursor: pointer) {
+    @include flex();
+    width: $width;
+    cursor: $cursor;
+    background-color: var(--clr-default-50);
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fff;
+}
+
+@mixin scrollbar {
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px #0000004d;
+        background-color: #F5F5F5;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-image: linear-gradient(0deg, var(--clr-scrollbar-10) 20%, var(--clr-scrollbar-20) 50%, var(--clr-scrollbar-30) 80%);
+    }
+}
+
+@mixin text-fadeIn($time: 2s) {
+    animation: fadein $time;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@mixin popup-ontainer {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    z-index: 1;
+  }

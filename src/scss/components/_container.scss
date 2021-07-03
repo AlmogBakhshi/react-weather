@@ -1,0 +1,132 @@
+@import '../abstracts';
+
+.container {
+    @include size(100%, 100%);
+    @include flex($align: flex-end);
+    
+    @media screen and (max-width: 500px) {
+        &__open {
+            display: contents !important;
+        }
+
+        &__header {
+            &__title {
+                font-size: x-large !important;
+            }
+    
+            &__navs {
+                @include size(0, 0);
+                top: 3em;
+                left: 0;
+                flex-direction: column;
+                justify-content: flex-start !important;
+                background: var(--clr-default-10);
+                z-index: 1;
+
+                &__open {
+                    @include size(100%, calc(100% - 3em));
+                    position: absolute !important;
+                }
+
+                &__link {
+                    @include size(100%, auto);
+                    margin: 5px 0 !important;
+                    padding: 5px 0;
+                    text-align: center;
+
+                    &:hover {
+                        background-color: var(--clr-default-50);
+                    }
+                }
+
+                &__line {
+                    @include size(20px, 2px);
+
+                    display: block;
+                    position: relative;
+                    background: #000;
+                    border-radius: 4px;
+
+                    &::before, &::after {
+                        @include size(100%, 100%);
+
+                        content: '';
+                        position: absolute;
+                        border-radius: 4px;
+                        background: #000;
+                    }
+
+                    &::before {
+                        transform: translateY(-5px);
+                    }
+                    
+                    &::after {
+                        transform: translateY(5px);
+                    }
+
+                    &__open {
+                        transform: rotate(45deg);
+
+                        &::before {
+                            transform: rotate(90deg);
+                        }
+
+                        &::after {
+                            content: none;
+                        }
+                    }
+                }
+            }
+
+            &__open {
+                position: unset !important;
+            }
+        }
+    }
+    
+    &__header {
+        @include size(100%, 3em);
+        @include flex(space-between);
+        user-select: none;
+        position: fixed;
+        top: 0;
+        z-index: 1;
+
+        &__title {
+            font-size: xx-large;
+            font-weight: bold;
+            margin-left: 5px
+        }
+
+        &__navs {
+            @include flex();
+            
+            &__link {
+                cursor: pointer;
+                margin: 0 1em;
+
+                &:hover {
+                    color: var(--clr-default-80);
+                }
+
+                &__selected {
+                    color: var(--clr-default-50);
+                }
+            }
+
+            &__line {
+                &__container {
+                    position: absolute;
+                    right: 0;
+                    cursor: pointer;
+                    margin-right: 10px;
+                    padding: 6px 0;
+                }
+            }
+        }
+    }
+
+    &__body {
+        @include size(100%, calc(100% - 48px));
+    }
+}

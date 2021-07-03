@@ -1,0 +1,30 @@
+@import '../abstracts';
+
+.popup {
+    @include popup-ontainer();
+
+    &__container {
+        @include size(fit-content, fit-content);
+        position: relative;
+        padding: 2em;
+        background-color: hsla(0, 0%, 0%, 0.2);
+        border: 1px solid black;
+        border-radius: 5px;
+
+        &__close {
+            cursor: pointer;
+            position: absolute;
+            top: 0.7em;
+            right: 0.7em;
+        }
+
+        &__text {
+            text-align: center;
+            margin-bottom: 1em;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
